@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('video');
+	</script>
+	<![endif]-->
+
+
+<link rel="stylesheet" type="text/css" href="css/leaflet.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.nouislider.min.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/index-2.css">
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/d3-tip.js"></script>
+
+<!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> -->
+<script type="text/javascript" src="js/leaflet.js"></script>
+<!-- leaflet cluster -->
+<link rel="stylesheet" href="leaflet.markercluster/dist/MarkerCluster.css" />
+<!-- <link rel="stylesheet" href="leaflet.markercluster/dist/MarkerCluster.Default.css" /> -->
+<script type="text/javascript" src="leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+<!-- leaflet cluster end -->
+
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+<script type="text/javascript" src="js/leaflet-heat.js"></script>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/propeller.js"></script>
+<script type="text/javascript" src="js/jquery.nouislider.js"></script>
+<script type="text/javascript" src="js/topojson.js"></script>
+
+<!-- tackle video(s1), map(s2) and s3 in this js file -->
+<script type="text/javascript" src="js/udn_traffic.js"></script>
+<!-- tackle s4 in this js file -->
+<script type="text/javascript" src="js/s4.js"></script>
+<!-- tackle s5 in this file -->
+<script type="text/javascript" src="js/s5.js"></script>
+<!-- tackle s6 in this file -->
+<script type="text/javascript" src="js/s6.js"></script>
+
+
+</head>
+<body>
+	<div id="video-wrap">
+		<div id="title-intro-wrap">
+			<div id="title">台灣死亡車禍<br>數字背後的隱憂</div>
+			<div id="intro">台灣的警政單位以減少「當場死亡或24小時內死亡」之A1類交通事故，作為重要施政指標。據統計，民國103年發生的1770件A1類事故，共奪走1819條人命，是10年來的新低。但單看A1死亡車禍數字，可能低估台灣交通事故的嚴重程度。本專題對比近10年來的A1交通事故統計，從死亡車禍發生的年齡段、車種、縣市分佈等角度分析，並由聯合報地方中心記者提供深入的採訪報導。
+			</div>
+			<div id="go-down-wrap">
+				<div id="go-down">
+					<img src="img/down.png">
+				</div>
+			</div>
+		</div>
+		<video autoplay loop poster="img/cover_bottom.jpg" id="bgvid">
+		<!-- <source src="http://demosthenes.info/assets/videos/polina.webm" type="video/webm"> -->
+		<source src="video/cover_film.mp4" type="video/mp4">
+			
+		</video>
+	</div>
+
+	<!-- big anchors is the bar on the top XDD -->
+	<!-- and it's big -->
+	<div id="big-anchors">
+		<div class="big-anchor"><div class="inner-anchor">103年死亡車禍地圖</div></div>
+		<div class="big-anchor"><div class="inner-anchor">受害者年齡分布</div></div>
+		<div class="big-anchor"><div class="inner-anchor">肇事車種佔比</div></div>
+		<div class="big-anchor"><div class="inner-anchor">事故發生縣市分析</div></div>
+		<div class="big-anchor"><div class="inner-anchor">10年車禍事故分析</div></div>
+	</div>
+	<div id="map"></div>
+	<div id="fake-scroll"></div>
+	<div class="fluid-container bg-black">
+		<div id="analysis-103" class="container">
+			<div id="s3-vertical-positioner" class="vertical-positioner">
+				<div class="sec-title font-msb" id="s3-title">受害者年齡分佈</div>
+				<div class="sec-content font-msb" id="s3-content">
+					103年因A1交通事故身亡的民眾中，「70歲以上」佔23.6%。近7年的數字顯示，「70歲以上」發生死亡車禍的人數居高不下，其次是「18至24歲」剛過法定年齡的社會新鮮人。</div>
+
+				<div id="s3-current-chart-name" class="font-msb">歷年A1交通事故死亡人數</div>
+				<div id="change-s3-btn" dir="103" title="看歷年" data-toggle="tooltip" data-placement="right"><img src="img/years.png"></div>
+
+				<div id="s3-chart">
+					<svg id="s3-svg">
+						
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fluid-container bg-black">
+		<div id="s4" class="container">
+			<div id="s4-vertical-positioner" class="vertical-positioner">
+				<div class="sec-title font-msb" id="s4-title">肇事車種佔比</div>
+				<div class="content font-msb" id="s4-content">發生A1交通事故的車種，小客車佔比逐年減少的同時，機車佔比在103年已達45%，幾乎平均每兩件死亡車禍就有一件是機車肇事。10年來，機車族死亡車禍雖有減少，但非常有限。
+				</div>
+				<div id="s4-current-chart-name" class="font-msb">近十年肇事車種占比</div>
+				<div id="s4-car-select"></div>
+				<div id="s4-line-chart">
+					<svg id="s4-svg"></svg>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="fluid-container bg-black">
+		<div id="s5" class="container">
+			<div class="vertical-positioner">
+				<div class="sec-title font-msb" id="s5-title">事故發生縣市分佈</div>
+				<div class="sec-content font-msb" id="s5-content">
+					103年A1交通事故最多的縣市，依次為高雄、台南、彰化。攤開10年的趨勢來看，高雄除94年外，均為最多。以A1交通事故死亡率來看，則以台東、花蓮、雲林為最高。對比死亡率最低的台北、新北、基隆，以十年平均值計算，台東高達台北的8倍。
+				</div>
+				<div id="map-content">
+					<div id="s5-map" class="fl">
+						<svg id="s5-svg"></svg>
+					</div>
+					<div id="s5-map-content" class="fl">
+						<div id="s5-content-1" class="s5-map-content font-msb">各縣市A1交通事故<span id="content-index" class="index-death">死亡人數</span></div>
+						<div id="s5-content-2" class="s5-map-content font-msb"><!-- 103年死亡數量人數最高的三縣市，高雄、台南與彰化。 --></div>
+						<div id="year-and-btn">
+							<div class="fl" id="map-current-year">103年</div>
+							<div class="fl" id="s5-map-btn" dir="number" data-toggle="tooltip" data-placement="right"><img src="img/percentage.png"></div>
+						</div>
+
+						<div id="map-slider-wrap">
+							<div id="map-slider"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div id="s6" class="fluid-container">
+		<div id="s6-tall-wrap">
+		</div>
+
+		<div class="s6-group">
+			<div class="s6-title">學者與地方執法單位的觀點</div>
+			<div class="s6-content">
+				進一步對比A1與A2類（指造成人員受傷或超過24小時死亡）交通事故，台灣整體交通事故發生數量卻是逐年不斷攀升。以103年為例，受傷民眾超過41萬人，其中包括輕、重傷者以及傷殘。<br><br>（圖表：A1對比A2？）
+ <br><br>中央警察大學交通學系教授蔡中志分析，台灣目前A1車禍從民國94年的三千多件下降到一千多件，死亡人數也跟著案件量減少，減少比率約59%，但A2車禍數量暴增，且成長幅度驚人。
+
+			</div>
+			<div class="s6-title">死亡車禍減少的三大因素</div>
+			<div class="s6-content">蔡中志分析原因，A1車禍案件下降與「車輛安全系數提升（安全氣囊裝設、板金強化）」、「緊急救護體系建制強化（救護車普及、醫療技術和設備進步）」、「法規修訂（摩托車強制戴安全帽、汽車繫安全帶）」等因素有關。<br><br>
+ 
+蔡中志調查，因汽車安全係數提升，目前國內A1車禍死者以騎（坐）機車的民眾居多，民國103年佔整體比例57%，A2比例則近80%，行人和自行車騎士也有成長趨勢。<br><br>
+ 
+交大運輸科技與管理學系教授吳宗修則認為，車禍案件增加與保險普及，民眾積極報案辦理賠；民眾自身權益意識抬頭，出了車禍就是要報警有關。</div>
+		</div>
+		<div class="s6-group">
+			<div class="s6-title">交通環境不利老人生活型態</div>
+			<div class="s6-content">從政府公開的死亡車禍數據分析，死亡人數最多的是70歲以上的老人，吳宗修認為，台灣老人生活型態沒有妥適規劃，絕大多數仍舊維持住在他生活幾十年的地方，只好騎機車或腳踏車出門或走路，通常捨不得坐計程車，但交通環境已經不是40年前的單純。</div>
+			<div class="s6-title">年輕機車族是高危險群</div>
+			<div class="s6-content">死亡第二位的是18到24歲的年輕人，交叉比對都是機車一族。機車是全世界公認相對危險交通工具。年輕人血氣方剛、取照獲車不久，而他們又是最欠缺駕駛經驗的一群。<br><br>
+ 
+學者蘇紫雲的統計，台灣道路事故損失極為驚人，民國102年發生交通事故27萬8千餘件，3千1百多人死亡（衛福部統計為國際標準30天內致死者，警政署僅列計24小時內致死者），另37萬3千多人受傷，每年約2萬人傷殘。<br><br>
+ 
+產險業統計近年死亡車禍賠償金額每年約140億元。汽機車強制險每年理賠損失約114億元，每年健保因車禍支出的醫療費高達220億元。</div>
+		</div>
+		<div class="s6-group">
+			<div class="s6-title">死亡人數最多：高雄、台南與彰化</div>
+			<div class="s6-content">高市警局交通大隊統計，103年高雄市車禍死亡有226人，居六都之首，高雄市警局交通大隊交安組長孔玉山認為，每位高雄市民持有機車的比率是全台最高有關。<br><br>
+ 
+此外，高雄市道路以棋盤式規劃，道路寬敞筆直，機車族容易超速行駛。<br><br>
+ 
+再者，機車族守法觀念不足，車禍死亡的226人中，機車車禍有147人。最後，高雄市民還沒有養成搭大眾運輸的習慣，交通工具仍以機車為主。<br><br>
+ 
+台南市警察局交通大隊長李名昌表示，去年台南市車禍死亡人數179人，他分析，老人比較沒有遵守交通規則觀念，騎機車轉彎時未打左轉或右轉的方向燈，早起運動穿著衣服可能較暗灰色，因不明顯，駕駛人沒有注意所致。<br><br>
+ 
+彰化去年有151起死亡車禍，年齡以70-79歲間最多，大多因未注意前方來車，違規釀禍，包括闖紅燈、超速、未兩段式轉彎以及視線死角造成。</div>
+		</div>
+		<div class="s6-group">
+			<div class="s6-title">死亡率最高：台東、花蓮與雲林</div>
+			<div class="s6-content">花東地區有個特別現象，就是觀光客佔死亡車禍的百分之廿五，是各縣市未有的情況。<br><br>
+ 
+本報調查發現，台東，尤其是綠島地區不少機車騎士都不戴安全帽，此外，海岸公路筆直、狹長，車速快，再加上車禍發生後，送醫路途遙遠，都是造成死亡人數多的原因。<br><br>
+ 
+花蓮縣警局認為，高居不下的死亡率除與地形狹長導致後送時間拉長有關外，近年來因為外來遊客增加，當人、車湧入花蓮，同時也增加意外發生。<br><br>
+ 
+花蓮地區狹長南北差距130多公里，且全縣面積廣大，當遇到事故時，緊急後送一直都是與死神搶黃金時間。花蓮縣警局交通安全組長楊世雄表示，在地形條件不改變的情況下，近年來車禍死亡率升高，推估與外來遊客增加有關。<br><br>
+ 
+花蓮縣警局交通安全組資料顯示，在98年交通意外總件數為6400餘件，103年增加到9700件，暴增逾6成，這5年也剛好是開放陸客來台的觀光時段。楊世雄表示，可推斷與陸客來台及國內遊客來花蓮旅遊的人數增加有密切關係。<br><br>
+ 
+雲林縣警局交通隊長蔡百川表示，雲林縣境車禍多原因，與交通公路長度居全國第二位；65歲以上老人人口比率達15.49%，居全國第二位等有關，交通事故又以「機車、高齡者、酒駕」三多。<br><br>
+ 
+交通隊細分車禍多因素，認為導因縣境道路筆直車速快，農業縣份產業道路多，一旦疏於注意或在路口未減速慢行即常發生車禍；縣民以機車代步為主，公共大眾運輸建設與系統不足，以致機車車禍多；高齡者交通辨識度低，反應能力差，以致老人意外車禍頻傳。</div>
+		</div>
+
+	</div>
+
+
+<div id="map-cluster-tooltip">
+	<div>
+		<div id="cluster-tooltip-imgwrap" class="fl">
+			<img id="cluster-tooltip-img">
+		</div>
+		<div class="fl" id="cluster-tooltip-spots">
+		</div>
+	</div>
+	<div id="cluster-tooltip-content">
+	</div>
+</div>
+
+</div>
+
+
+</body>
+
+</html>
