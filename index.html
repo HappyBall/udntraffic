@@ -51,8 +51,11 @@
 <body>
 	<div id="video-wrap">
 		<div id="title-intro-wrap">
-			<div id="title">台灣死亡車禍<br>數字背後的隱憂</div>
-			<div id="intro">台灣的警政單位以減少「當場死亡或24小時內死亡」之A1類交通事故，作為重要施政指標。據統計，民國103年發生的1770件A1類事故，共奪走1819條人命，是10年來的新低。但單看A1死亡車禍數字，可能低估台灣交通事故的嚴重程度。本專題對比近10年來的A1交通事故統計，從死亡車禍發生的年齡段、車種、縣市分佈等角度分析，並由聯合報地方中心記者提供深入的採訪報導。
+			<div id="title">致命撞擊<br>被低估的台灣死亡車禍數</div>
+			<div id="intro">
+				這是一份我們最近整理過最沉重的數據，不論是意義上、或資料清理上。<p>
+				意義上，不只因為每一筆數字都代表生命痛逝，我們發現，台灣車禍統計異於國際統計，無法從官方數字直接判斷致命車禍是否日趨嚴重，也難以跟國際比較。<p>
+				資料清理上，台灣車禍的公開地理資料格式，彷彿停留在前GPS時代，沒有經緯度，無法精準資料視覺化。因此我們以人工方式，耐心手動清理去年1770筆「當場死亡或24小時內死亡車禍」地圖。
 			</div>
 			<div id="go-down-wrap">
 				<div id="go-down">
@@ -71,19 +74,19 @@
 	<!-- and it's big -->
 	<div id="big-anchors">
 		<div class="big-anchor"><div class="inner-anchor">103年死亡車禍地圖</div></div>
-		<div class="big-anchor"><div class="inner-anchor">受害者年齡分布</div></div>
+		<div class="big-anchor"><div class="inner-anchor">死亡者年齡分布</div></div>
 		<div class="big-anchor"><div class="inner-anchor">肇事車種佔比</div></div>
 		<div class="big-anchor"><div class="inner-anchor">事故發生縣市分析</div></div>
-		<div class="big-anchor"><div class="inner-anchor">10年車禍事故分析</div></div>
+		<div class="big-anchor"><div class="inner-anchor">專題製作面的困難</div></div>
 	</div>
 	<div id="map"></div>
 	<div id="fake-scroll"></div>
 	<div class="fluid-container bg-black">
 		<div id="analysis-103" class="container">
 			<div id="s3-vertical-positioner" class="vertical-positioner">
-				<div class="sec-title font-msb" id="s3-title">受害者年齡分佈</div>
+				<div class="sec-title font-msb" id="s3-title">死亡者年齡分佈</div>
 				<div class="sec-content font-msb" id="s3-content">
-					103年因A1交通事故身亡的民眾中，「70歲以上」佔23.6%。近7年的數字顯示，「70歲以上」發生死亡車禍的人數居高不下，其次是「18至24歲」剛過法定年齡的社會新鮮人。</div>
+					從數據來看，24小時內死亡的車禍人數最多的是70歲以上的老人；第二多的是18到24歲的年輕人，這個年齡層多半是新手駕駛，且大多騎機車。交大運管系教授吳宗修研究發現，大學生機車死亡最常發生在9、10月，推估與暑假後開學揪團去玩有關。</div>
 
 				<div id="s3-current-chart-name" class="font-msb">歷年A1交通事故死亡人數</div>
 				<div id="change-s3-btn" dir="103" title="看歷年" data-toggle="tooltip" data-placement="right"><img src="img/years.png"></div>
@@ -100,7 +103,7 @@
 		<div id="s4" class="container">
 			<div id="s4-vertical-positioner" class="vertical-positioner">
 				<div class="sec-title font-msb" id="s4-title">肇事車種佔比</div>
-				<div class="content font-msb" id="s4-content">發生A1交通事故的車種，小客車佔比逐年減少的同時，機車佔比在103年已達45%，幾乎平均每兩件死亡車禍就有一件是機車肇事。10年來，機車族死亡車禍雖有減少，但非常有限。
+				<div class="content font-msb" id="s4-content">機車俗稱「人包鐵」，數據顯示，24小時內死亡的重大車禍，確實以機車占比最高。10年前，小客車和機車比例相當，之後機車占比逐年上升，幾乎平均每2件死亡車禍就有1件是機車肇事。
 				</div>
 				<div id="s4-current-chart-name" class="font-msb">近十年肇事車種占比</div>
 				<div id="s4-car-select"></div>
@@ -117,7 +120,8 @@
 			<div class="vertical-positioner">
 				<div class="sec-title font-msb" id="s5-title">事故發生縣市分佈</div>
 				<div class="sec-content font-msb" id="s5-content">
-					103年A1交通事故最多的縣市，依次為高雄、台南、彰化。攤開10年的趨勢來看，高雄除94年外，均為最多。以A1交通事故死亡率來看，則以台東、花蓮、雲林為最高。對比死亡率最低的台北、新北、基隆，以十年平均值計算，台東高達台北的8倍。
+					根據統計，103年高雄市車禍死亡人數有226人，居六都之首，其次是台南、彰化。
+若看死亡率，近10年平均值則是花蓮、台東、雲林最高，對比死亡率最低的北北基，花蓮高達台北的11倍。
 				</div>
 				<div id="map-content">
 					<div id="s5-map" class="fl">
@@ -127,7 +131,7 @@
 						<div id="s5-content-1" class="s5-map-content font-msb">各縣市A1交通事故<span id="content-index" class="index-death">死亡人數</span></div>
 						<div id="s5-content-2" class="s5-map-content font-msb"><!-- 103年死亡數量人數最高的三縣市，高雄、台南與彰化。 --></div>
 						<div id="year-and-btn">
-							<div class="fl" id="map-current-year">103年</div>
+							<div class="fl" id="map-current-year">94年</div>
 							<div class="fl" id="s5-map-btn" dir="number" data-toggle="tooltip" data-placement="right"><img src="img/percentage.png"></div>
 						</div>
 
@@ -145,20 +149,22 @@
 		</div>
 
 		<div class="s6-group">
-			<div class="s6-title">學者與地方執法單位的觀點</div>
+			<div class="s6-title">統計的魔鬼細節</div>
 			<div class="s6-content">
-				進一步對比A1與A2類（指造成人員受傷或超過24小時死亡）交通事故，台灣整體交通事故發生數量卻是逐年不斷攀升。以103年為例，受傷民眾超過41萬人，其中包括輕、重傷者以及傷殘。<br><br>（圖表：A1對比A2？）
- <br><br>中央警察大學交通學系教授蔡中志分析，台灣目前A1車禍從民國94年的三千多件下降到一千多件，死亡人數也跟著案件量減少，減少比率約59%，但A2車禍數量暴增，且成長幅度驚人。
-
+				「一場車禍發生後，幾天內死亡，可以被算為是因車禍致命？」這是統計定義上的難題，但也可能造成統計上的掩飾。<br><br>
+				根據WHO報告，不同統計標準，可能造成低估車禍致死率。<br><br>
+				台灣警政體系的交通事故統計，可分A1類、A2類。A1類是24小時內致死的車禍件數，表示嚴重快速致命的車禍；A2類則是受傷或超過24小時死亡。<br><br>
+				然而，可供公民辯論的地方在於，同樣有可能是因車禍死亡，「24小時後」死亡就不計入A1統計，是否因此低估台灣致命車禍率？國際間，為達成有意義的資料比較，通常將致命車禍定義為「車禍30日內死亡者」。<br><br>
+				細看台灣近10年資料，A1類下降41%，但A2類卻暴增。魔鬼藏在細節裡，若只看A1類數字，是否對於交通安全改善、事故資料分析，具有建設性意義？值得辯論探究。
 			</div>
-			<div class="s6-title">死亡車禍減少的三大因素</div>
-			<div class="s6-content">蔡中志分析原因，A1車禍案件下降與「車輛安全系數提升（安全氣囊裝設、板金強化）」、「緊急救護體系建制強化（救護車普及、醫療技術和設備進步）」、「法規修訂（摩托車強制戴安全帽、汽車繫安全帶）」等因素有關。<br><br>
- 
-蔡中志調查，因汽車安全係數提升，目前國內A1車禍死者以騎（坐）機車的民眾居多，民國103年佔整體比例57%，A2比例則近80%，行人和自行車騎士也有成長趨勢。<br><br>
- 
-交大運輸科技與管理學系教授吳宗修則認為，車禍案件增加與保險普及，民眾積極報案辦理賠；民眾自身權益意識抬頭，出了車禍就是要報警有關。</div>
+			<div class="s6-title">公開資料格式 跟不上時代</div>
+			<div class="s6-content">
+				台灣官方開放的交通事故統計資料，未列精準的車禍地點經緯度，常以某路口、某地標方式記錄。以去年資料為例，還曾出現「OO路OO幼兒園(附近)」，這種既不是精確地址、也不確定是否「OO幼兒園」會一直營業而不讓這資料失效的荒謬情況。<br><br>
+				這種公開資料格式，既無法用工程方式進行資料視覺化，也造成交通資料的後續統整、累積、再利用、以及判讀不易。<br><br>
+				聯合報系新媒體部進行一次2014年A1類1770筆資料清理的實驗。工程師自寫一組內部地圖套件工具，手動調整標示所有類似「台14線70公里500公尺處」、「OO路OO幼兒園」的資料在地圖上。
+			</div>
 		</div>
-		<div class="s6-group">
+		<!-- <div class="s6-group">
 			<div class="s6-title">交通環境不利老人生活型態</div>
 			<div class="s6-content">從政府公開的死亡車禍數據分析，死亡人數最多的是70歲以上的老人，吳宗修認為，台灣老人生活型態沒有妥適規劃，絕大多數仍舊維持住在他生活幾十年的地方，只好騎機車或腳踏車出門或走路，通常捨不得坐計程車，但交通環境已經不是40年前的單純。</div>
 			<div class="s6-title">年輕機車族是高危險群</div>
@@ -195,7 +201,7 @@
 雲林縣警局交通隊長蔡百川表示，雲林縣境車禍多原因，與交通公路長度居全國第二位；65歲以上老人人口比率達15.49%，居全國第二位等有關，交通事故又以「機車、高齡者、酒駕」三多。<br><br>
  
 交通隊細分車禍多因素，認為導因縣境道路筆直車速快，農業縣份產業道路多，一旦疏於注意或在路口未減速慢行即常發生車禍；縣民以機車代步為主，公共大眾運輸建設與系統不足，以致機車車禍多；高齡者交通辨識度低，反應能力差，以致老人意外車禍頻傳。</div>
-		</div>
+		</div> -->
 
 	</div>
 
