@@ -214,6 +214,10 @@ div#map-slider-wrap{
 	position: relative;
 }
 
+#highcharts-container{
+	height: 300px;
+}
+
 #s6-tall-wrap{
 	transition: background-image 1s ease-in-out;
 	height: 100%;
