@@ -51,10 +51,16 @@
 <body>
 	<div id="video-wrap">
 		<div id="title-intro-wrap">
-			<div id="title">致命撞擊<br>被低估的台灣死亡車禍數</div>
+			<div id="big-title">致命撞擊</div>
+			<div id = 'title'>被低估的台灣死亡車禍數</div>
+			<div class = "editor-src">
+				聯合報新媒體部／王啟安、王秀琳、金少文、楊棋宇、盧巧梅、呂紹齊 製作<br>
+				聯合報記者／郭政芬、陳俊智、林敬家、陳信利、吳政修、劉星君、陳宏睿、尤聰光、游婉琪 採訪報導<br>
+				資料來源／交通部
+			</div>
 			<div id="intro">
-				這是一份我們最近整理過最沉重的數據，不論是意義上、或資料清理上。<p>
-				意義上，不只因為每一筆數字都代表生命痛逝，我們發現，台灣車禍統計異於國際統計，無法從官方數字直接判斷致命車禍是否日趨嚴重，也難以跟國際比較。<p>
+				這是一份我們最近整理過最沉重的數據，不論是意義上、或資料清理上。<br><br>
+				意義上，不只因為每一筆數字都代表生命痛逝，我們發現，台灣車禍統計異於國際統計，無法從官方數字直接判斷致命車禍是否日趨嚴重，也難以跟國際比較。<br><br>
 				資料清理上，台灣車禍的公開地理資料格式，彷彿停留在前GPS時代，沒有經緯度，無法精準資料視覺化。因此我們以人工方式，耐心手動清理去年1770筆「當場死亡或24小時內死亡車禍」地圖。
 			</div>
 			<div id="go-down-wrap">
@@ -88,9 +94,11 @@
 				<div class="sec-content font-msb" id="s3-content">
 					從數據來看，24小時內死亡的車禍人數最多的是70歲以上的老人；第二多的是18到24歲的年輕人，這個年齡層多半是新手駕駛，且大多騎機車。交大運管系教授吳宗修研究發現，大學生機車死亡最常發生在9、10月，推估與暑假後開學揪團去玩有關。</div>
 
-				<div id="s3-current-chart-name" class="font-msb">歷年A1交通事故死亡人數</div>
-				<div id="change-s3-btn" dir="103" title="看歷年" data-toggle="tooltip" data-placement="right"><img src="img/years.png"></div>
-
+				<!-- <div id="s3-current-chart-name" class="font-msb">歷年A1交通事故死亡人數</div> -->
+				<div id = "change-s3-btn-block">
+					<div class="change-s3-btn" id = "change-s3-btn-103" dir="103"><img src="img/103.png"></div>
+					<div class="change-s3-btn" id = "change-s3-btn-years" dir="years"><img src="img/years.png"></div>
+				</div>
 				<div id="s3-chart">
 					<svg id="s3-svg">
 						
@@ -128,11 +136,19 @@
 						<svg id="s5-svg"></svg>
 					</div>
 					<div id="s5-map-content" class="fl">
+						<div id = "s5-map-btn-block">
+							<div class="fl s5-map-btn" id="s5-map-btn-num" dir="number" >
+								<img src="img/number.png">
+							</div>
+							<div class="fl s5-map-btn" id="s5-map-btn-percent" dir="percentage" >
+								<img src="img/percentage.png">
+							</div>
+						</div>
 						<div id="s5-content-1" class="s5-map-content font-msb">各縣市A1交通事故<span id="content-index" class="index-death">死亡人數</span></div>
-						<div id="s5-content-2" class="s5-map-content font-msb"><!-- 103年死亡數量人數最高的三縣市，高雄、台南與彰化。 --></div>
+						<!-- <div id="s5-content-2" class="s5-map-content font-msb">103年死亡數量人數最高的三縣市，高雄、台南與彰化。</div> -->
 						<div id="year-and-btn">
 							<div class="fl" id="map-current-year">94年</div>
-							<div class="fl" id="s5-map-btn" dir="number" data-toggle="tooltip" data-placement="right"><img src="img/percentage.png"></div>
+							
 						</div>
 
 						<div id="map-slider-wrap">

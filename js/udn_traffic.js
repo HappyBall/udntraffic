@@ -7,6 +7,8 @@ var hurtPar = 15;
 
 $(document).ready(function(){
 
+	var s3_btn_selected = '103';
+
 	var bestFitZoom = 13;
 
 	//section one
@@ -32,7 +34,7 @@ $(document).ready(function(){
 
 	d3.csv("../data/county-zoom-center.csv", function(data){
 
-		console.log(data);
+		// console.log(data);
 
 		var latlngDict = {};
 		for (var i = 0; i < data.length; i++) {
@@ -63,7 +65,7 @@ $(document).ready(function(){
 		};*/
 
 
-		window.map = L.map('map').setView([25.04516, 121.540892], 11);// add an OpenStreetMap tile layer
+		window.map = L.map('map').setView([25.04516, 121.540892], 10);// add an OpenStreetMap tile layer
 		// map.scrollWheelZoom.disable();
 
 		L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
@@ -417,25 +419,37 @@ $(document).ready(function(){
 	
 
 	//section 3
-	$("#change-s3-btn").click(function(){
+	$(".change-s3-btn").click(function(){
 		var dir = $(this).attr("dir");
-		//rotate to left
-		if (dir == "103") {
-			// $(this).addClass("s3-btn-left");
-			$(this).attr("dir", "years");
-			$(this).attr("data-original-title", "看103年");
-			$(this).find('img').attr('src', 'img/103.png');
-			moveBarsOf103();
-			
-		}else if(dir == "years"){
-			//rotate to right
-			// $(this).removeClass("s3-btn-left");
-			$(this).attr("dir", "103");
-			$(this).attr("data-original-title", "看歷年");
-			$(this).find('img').attr('src', 'img/years.png');
-			showOnlyBarsOf103();
+
+		if(dir !== s3_btn_selected){
+
+			s3_btn_selected = dir;
+
+			//rotate to left
+			if (dir == "103") {
+				// $(this).addClass("s3-btn-left");
+				// $(this).attr("dir", "years");
+				// $(this).attr("data-original-title", "看103年");
+				// $(this).find('img').attr('src', 'img/103.png');
+				showOnlyBarsOf103();
+				$(this).css('opacity', '1');
+				$('#change-s3-btn-years').css('opacity', '0.5');
+				
+			}else if(dir == "years"){
+				//rotate to right
+				// $(this).removeClass("s3-btn-left");
+				// $(this).attr("dir", "103");
+				// $(this).attr("data-original-title", "看歷年");
+				// $(this).find('img').attr('src', 'img/years.png');
+				moveBarsOf103();
+				$(this).css('opacity', '1');
+				$('#change-s3-btn-103').css('opacity', '0.5');
+			}
 
 		}
+
+
 	});
 
 	// $("#change-s3-btn").tooltip();
@@ -461,7 +475,7 @@ $(document).ready(function(){
 			sumAgeData.push(sum);
 		};
 
-		console.log(sumAgeData);
+		// console.log(sumAgeData);
 
 
 		var dataArr103 = [];
@@ -487,7 +501,7 @@ $(document).ready(function(){
 		
 		window.barTip = d3.tip().attr("class", "bar-tip").html(function(d){
 
-			if ($("#change-s3-btn").attr("dir") == "left") {
+			if (s3_btn_selected == "years") {
 				return d["idx"] + "<br>死亡人數：" + d["val"] + "<br>" + "佔比：" + d["rate"] + "%";	
 			}else{
 				return "103年<br>" +  d["idx"] + "<br>死亡人數：" + d["val"] + "<br>" + "佔比：" + d["rate"] + "%";

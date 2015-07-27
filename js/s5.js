@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	var s5_btn_selected = "number";
 
 	// init slider
 	$('#map-slider').noUiSlider({
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	           		return "1.5";
 				})
 	           .on("mouseover", function(d){
-	           	console.log(d.properties.COUNTYNAME);
+	           	// console.log(d.properties.COUNTYNAME);
 	           });
 
 		window.currentSliderYear = 94;
@@ -135,7 +135,7 @@ $(document).ready(function(){
 						d3.select(d3.select(this).node().parentNode).call(circleTip);
 						d3.select(this).on("mouseover", function(it){
 							// console.log(it.properties.COUNTYNAME);
-							console.log( d3.select(this).attr("fill") );
+							// console.log( d3.select(this).attr("fill") );
 							if ($("#content-index").text() == "死亡率") {
 								d3.select(this).attr("fill", "rgba(187, 234, 139, 1)").attr("stroke", 2);
 							}else{
@@ -214,7 +214,7 @@ $(document).ready(function(){
 			    })
 				.on("end", function(){
 
-					console.log("the function ends here");
+					// console.log("the function ends here");
 
 					var refData, refScale;
 					if ($("#content-index").text() == "死亡人數") {
@@ -252,7 +252,7 @@ $(document).ready(function(){
 					d3.select("#s5-svg").selectAll("circle").each(function(it){
 
 						if ( tempArr.indexOf(it.properties.COUNTYNAME)!= -1 ) {
-							console.log("found something");
+							// console.log("found something");
 						};
 					});
 
@@ -283,7 +283,7 @@ $(document).ready(function(){
 						var circles = d3.select("svg#s5-svg").select("#map-g").selectAll("circle")
 							.each(function(it) {
 
-								console.log(it.properties.COUNTYNAME);
+								// console.log(it.properties.COUNTYNAME);
 								var deathVal = parseFloat(refData[targetYearIdx][it["properties"]["COUNTYNAME"]]);
 								if (!deathVal) {
 									it.properties.r = 0;
@@ -325,12 +325,12 @@ $(document).ready(function(){
 
 						var targetYearIdx = parseInt($("#map-slider").val() - 94);
 
-						console.log("=====================");
-						console.log(refData[targetYearIdx]);
+						// console.log("=====================");
+						// console.log(refData[targetYearIdx]);
 
 						var tempArr = [];
 						for (county in refData[targetYearIdx]) {
-							console.log(county);
+							// console.log(county);
 							if (county == ""){
 								// console.log("dude");
 								continue;
@@ -351,77 +351,85 @@ $(document).ready(function(){
 
 						addTextToTopThree(deathData, deathRateData, data2Radius, rateData2Radius );
 
-						console.log(tempArr);
+						// console.log(tempArr);
 
 					}
 				});
 
 				// init btn
-				$("#s5-map-btn").click(function(){
+				$(".s5-map-btn").click(function(){
 
-					if ($(this).attr("dir") == "number") {
-						//change data to rate
-						// $(this).addClass("s5-btn-left");
-						$(this).attr("dir", "percentage");
-						// $(this).attr("data-original-title", "看死亡人數");
-						//
-						$("#content-index").text("死亡率");
-						$("#content-index").removeClass("index-death").addClass("index-death-rate");
+					var dir = $(this).attr("dir");
 
-						$(this).find('img').attr('src', 'img/number.png');
+					if(dir !== s5_btn_selected){
+
+						s5_btn_selected = dir;
+
+						if ( dir == "percentage") {
+							//change data to rate
+							// $(this).addClass("s5-btn-left");
+							// $(this).attr("dir", "percentage");
+							// $(this).attr("data-original-title", "看死亡人數");
+							//
+							$("#content-index").text("死亡率");
+							$("#content-index").removeClass("index-death").addClass("index-death-rate");
+							$(this).css('opacity', '1');
+							$('#s5-map-btn-num').css('opacity', '0.5');
+							// $(this).find('img').attr('src', 'img/number.png');
 
 
-					}else{
+						}else{
 
-						//change data back to death count
-						// $(this).removeClass("s5-btn-left");
-						$(this).attr("dir", "number");
-						// $(this).attr("data-original-title", "看死亡率");
+							//change data back to death count
+							// $(this).removeClass("s5-btn-left");
+							// $(this).attr("dir", "number");
+							// $(this).attr("data-original-title", "看死亡率");
 
-						$("#content-index").text("死亡人數");
-						$("#content-index").removeClass("index-death-rate").addClass("index-death");
+							$("#content-index").text("死亡人數");
+							$("#content-index").removeClass("index-death-rate").addClass("index-death");
+							$(this).css('opacity', '1');
+							$('#s5-map-btn-percent').css('opacity', '0.5');
+							// $(this).find('img').attr('src', 'img/percentage.png');
 
-						$(this).find('img').attr('src', 'img/percentage.png');
+						}
+
+						var refData, refScale, refColor;
+						if ($("#content-index").text() == "死亡人數") {
+							refData = deathData;
+							refScale = data2Radius;
+							refColor = "rgba(86, 210, 239, 0.7)";
+						}else{
+							refData = deathRateData;
+							refScale = rateData2Radius;
+							refColor = "rgba(187, 234, 139, 0.7)";
+						}
+
+						var targetYearIdx = parseInt($("#map-slider").val() - 94);
+						var circles = d3.select("svg#s5-svg").select("#map-g").selectAll("circle")
+							.each(function(it) {
+								// console.log(it.properties);
+								var deathVal = parseFloat(refData[targetYearIdx][it["properties"]["COUNTYNAME"]]);
+								if (!deathVal) {
+									it.properties.r = 0;
+								}else{
+									it.properties.r = refScale(refData[targetYearIdx][it["properties"]["COUNTYNAME"]]);
+									it.properties.raw = refData[targetYearIdx][it["properties"]["COUNTYNAME"]];
+								}
+						    	it.properties.c = path.centroid(it);
+						    	it.properties.x = 400;
+						    	it.properties.y = 300;
+						    })
+						    // .transition().duration(500)
+						    .attr("cx",function(it) { return it.properties.x + it.properties.c[0] - 400; })
+							.attr("cy",function(it) { return it.properties.y + it.properties.c[1] - 300; })
+							.attr("fill", refColor)
+							.transition().duration(200)
+							.attr("r", function(it) { return it.properties.r; });
+
+						force.start();
+						addTextToTopThree(deathData, deathRateData, data2Radius, rateData2Radius );
 
 					}
-
-					var refData, refScale, refColor;
-					if ($("#content-index").text() == "死亡人數") {
-						refData = deathData;
-						refScale = data2Radius;
-						refColor = "rgba(86, 210, 239, 0.7)";
-					}else{
-						refData = deathRateData;
-						refScale = rateData2Radius;
-						refColor = "rgba(187, 234, 139, 0.7)";
-					}
-
-					var targetYearIdx = parseInt($("#map-slider").val() - 94);
-					var circles = d3.select("svg#s5-svg").select("#map-g").selectAll("circle")
-						.each(function(it) {
-							// console.log(it.properties);
-							var deathVal = parseFloat(refData[targetYearIdx][it["properties"]["COUNTYNAME"]]);
-							if (!deathVal) {
-								it.properties.r = 0;
-							}else{
-								it.properties.r = refScale(refData[targetYearIdx][it["properties"]["COUNTYNAME"]]);
-								it.properties.raw = refData[targetYearIdx][it["properties"]["COUNTYNAME"]];
-							}
-					    	it.properties.c = path.centroid(it);
-					    	it.properties.x = 400;
-					    	it.properties.y = 300;
-					    })
-					    // .transition().duration(500)
-					    .attr("cx",function(it) { return it.properties.x + it.properties.c[0] - 400; })
-						.attr("cy",function(it) { return it.properties.y + it.properties.c[1] - 300; })
-						.attr("fill", refColor)
-						.transition().duration(200)
-						.attr("r", function(it) { return it.properties.r; });
-
-					force.start();
-					addTextToTopThree(deathData, deathRateData, data2Radius, rateData2Radius );
-
-
 
 
 				});

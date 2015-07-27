@@ -148,16 +148,24 @@ div#map-current-year{
 
 div#year-and-btn{
 	display: table;
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 }
 
-div#s5-map-btn {
+#s5-map-btn-block{
+	display: table;
+}
+
+div.s5-map-btn {
   margin-left: 15px;
-  -webkit-transition: 0.5s ease-in-out;
+  /*-webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;*/
   
+}
+
+#s5-map-btn-percent{
+	opacity: 0.5;
 }
 
 
@@ -169,12 +177,12 @@ div#s5-map-btn {
     transform: translate(180deg);
 }
 
-#s5-map-btn:hover{
+.s5-map-btn:hover{
 	cursor: pointer;
 }
 
 div#map-slider-wrap{
-	margin-top: 45px;
+	margin-top: 10px;
 	width: 310px;
 }
 
