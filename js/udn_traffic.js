@@ -452,7 +452,7 @@ $(document).ready(function(){
 
 	});
 
-	// $("#change-s3-btn").tooltip();
+	$(".change-s3-btn").tooltip();
 
 
 	d3.csv("../data/a1-age.csv", function(data){

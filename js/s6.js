@@ -11,6 +11,9 @@ $(document).ready(function(){
             backgroundColor: '#232323',
             type: 'line'
         },
+        credits:{
+        	enabled: false
+        },
         title: {
             text: ''
         },
@@ -20,7 +23,12 @@ $(document).ready(function(){
         xAxis: [{
             categories: ['93', '94', '95', '96', '97', '98','99', '100', '101', '102', '103'],
             color:'#FFFFFF',
-            crosshair: true
+            crosshair: true,
+            labels:{
+            	style: {
+            		"color": "#fff"
+            	}
+            }
         }],
         yAxis: [
             
@@ -28,14 +36,14 @@ $(document).ready(function(){
             labels: {
                 format: '{value}',
                 style: {
-                    color: Highcharts.getOptions().colors[1]
+                    color: '#fff'
                 }
             },
             lineColor:'#ededed',
             title: {
                 text: 'A2',
                 style: {
-                    color: Highcharts.getOptions().colors[1]
+                    color: '#fff'
                 }
             }
         }, { // Secondary yAxis
@@ -72,7 +80,10 @@ $(document).ready(function(){
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle',
-            borderWidth: 0
+            borderWidth: 0,
+            itemStyle: {
+            	color: '#fff'
+            }
         },
         series: [{
             name: 'A1',

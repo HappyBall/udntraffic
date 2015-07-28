@@ -181,6 +181,13 @@ div.s5-map-btn {
 	cursor: pointer;
 }
 
+#slide-to-see{
+	font-size: 14px;
+	color: #fff;
+	margin-top: 40px;
+	margin-left: 10px;
+}
+
 div#map-slider-wrap{
 	margin-top: 10px;
 	width: 310px;
@@ -215,7 +222,8 @@ div#map-slider-wrap{
 }
 
 #highcharts-container{
-	height: 300px;
+	height: 350px;
+	margin-bottom: 50px;
 }
 
 #s6-tall-wrap{

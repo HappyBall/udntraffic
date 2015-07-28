@@ -60,8 +60,12 @@
 			</div>
 			<div id="intro">
 				這是一份我們最近整理過最沉重的數據，不論是意義上、或資料清理上。<br><br>
-				意義上，不只因為每一筆數字都代表生命痛逝，我們發現，台灣車禍統計異於國際統計，無法從官方數字直接判斷致命車禍是否日趨嚴重，也難以跟國際比較。<br><br>
-				資料清理上，台灣車禍的公開地理資料格式，彷彿停留在前GPS時代，沒有經緯度，無法精準資料視覺化。因此我們以人工方式，耐心手動清理去年1770筆「當場死亡或24小時內死亡車禍」地圖。
+				意義上，不只因為每一筆數字都代表生命痛逝，我們發現台灣車禍統計異於國際統計，無法從官方數字直接判斷致命車禍是否日趨嚴重，也難以跟國際比較。<br><br>
+				資料清理上，台灣車禍的公開地理資料格式，彷彿停留在前GPS時代，沒有經緯度定位，導致無法精準資料視覺化。因此我們以人工方式，耐心手動清理去年1770筆「當場死亡或24小時內死亡車禍」地圖。
+			</div>
+			<div class = "logo-block">
+				<div class = "logo fl"><a href="http://theme.udn.com/theme/cate/6772" target="_blank"><img src="img/udnlogo.png"></a></div>
+				<div class = "logo fl" id = "nm-logo"><a href="https://www.facebook.com/udnNewMediaLab?fref=ts" target="_blank"><img src="img/nmlogo.png"></a></div>
 			</div>
 			<div id="go-down-wrap">
 				<div id="go-down">
@@ -81,7 +85,7 @@
 	<div id="big-anchors">
 		<div class="big-anchor"><div class="inner-anchor">103年死亡車禍地圖</div></div>
 		<div class="big-anchor"><div class="inner-anchor">死亡者年齡分布</div></div>
-		<div class="big-anchor"><div class="inner-anchor">肇事車種佔比</div></div>
+		<div class="big-anchor"><div class="inner-anchor">肇事車種占比</div></div>
 		<div class="big-anchor"><div class="inner-anchor">事故發生縣市分析</div></div>
 		<div class="big-anchor"><div class="inner-anchor">專題製作面的困難</div></div>
 	</div>
@@ -90,14 +94,14 @@
 	<div class="fluid-container bg-black">
 		<div id="analysis-103" class="container">
 			<div id="s3-vertical-positioner" class="vertical-positioner">
-				<div class="sec-title font-msb" id="s3-title">死亡者年齡分佈</div>
+				<div class="sec-title font-msb" id="s3-title">死亡者年齡分布</div>
 				<div class="sec-content font-msb" id="s3-content">
 					從數據來看，24小時內死亡的車禍人數最多的是70歲以上的老人；第二多的是18到24歲的年輕人，這個年齡層多半是新手駕駛，且大多騎機車。交大運管系教授吳宗修研究發現，大學生機車死亡最常發生在9、10月，推估與暑假後開學揪團去玩有關。</div>
 
 				<!-- <div id="s3-current-chart-name" class="font-msb">歷年A1交通事故死亡人數</div> -->
 				<div id = "change-s3-btn-block">
-					<div class="change-s3-btn" id = "change-s3-btn-103" dir="103"><img src="img/103.png"></div>
-					<div class="change-s3-btn" id = "change-s3-btn-years" dir="years"><img src="img/years.png"></div>
+					<div class="change-s3-btn" id = "change-s3-btn-103" dir="103" data-toggle="tooltip" data-placement="top" title="看103年"><img src="img/103.png"></div>
+					<div class="change-s3-btn" id = "change-s3-btn-years" dir="years" data-toggle="tooltip" data-placement="top" title="看歷年"><img src="img/years.png"></div>
 				</div>
 				<div id="s3-chart">
 					<svg id="s3-svg">
@@ -110,7 +114,7 @@
 	<div class="fluid-container bg-black">
 		<div id="s4" class="container">
 			<div id="s4-vertical-positioner" class="vertical-positioner">
-				<div class="sec-title font-msb" id="s4-title">肇事車種佔比</div>
+				<div class="sec-title font-msb" id="s4-title">肇事車種占比</div>
 				<div class="content font-msb" id="s4-content">機車俗稱「人包鐵」，數據顯示，24小時內死亡的重大車禍，確實以機車占比最高。10年前，小客車和機車比例相當，之後機車占比逐年上升，幾乎平均每2件死亡車禍就有1件是機車肇事。
 				</div>
 				<div id="s4-current-chart-name" class="font-msb">近十年肇事車種占比</div>
@@ -126,7 +130,7 @@
 	<div class="fluid-container bg-black">
 		<div id="s5" class="container">
 			<div class="vertical-positioner">
-				<div class="sec-title font-msb" id="s5-title">事故發生縣市分佈</div>
+				<div class="sec-title font-msb" id="s5-title">事故發生縣市分析</div>
 				<div class="sec-content font-msb" id="s5-content">
 					根據統計，103年高雄市車禍死亡人數有226人，居六都之首，其次是台南、彰化。
 若看死亡率，近10年平均值則是花蓮、台東、雲林最高，對比死亡率最低的北北基，花蓮高達台北的11倍。
@@ -144,11 +148,11 @@
 								<img src="img/percentage.png">
 							</div>
 						</div>
-						<div id="s5-content-1" class="s5-map-content font-msb">各縣市A1交通事故<span id="content-index" class="index-death">死亡人數</span></div>
+						<div id="s5-content-1" class="s5-map-content font-msb">各縣市死亡車禍<span id="content-index" class="index-death">死亡人數</span></div>
 						<!-- <div id="s5-content-2" class="s5-map-content font-msb">103年死亡數量人數最高的三縣市，高雄、台南與彰化。</div> -->
 						<div id="year-and-btn">
-							<div class="fl" id="map-current-year">94年</div>
-							
+							<div class="fl" id="map-current-year">103年</div>
+							<div class="fl" id="slide-to-see">滑動看歷年</div>
 						</div>
 
 						<div id="map-slider-wrap">

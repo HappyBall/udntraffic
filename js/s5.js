@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	// init slider
 	$('#map-slider').noUiSlider({
-		start: 94,
+		start: 103,
 		connect: "lower",
 		orientation: "horizontal",
 		range: {
@@ -64,7 +64,7 @@ $(document).ready(function(){
 	           	// console.log(d.properties.COUNTYNAME);
 	           });
 
-		window.currentSliderYear = 94;
+		window.currentSliderYear = 103;
 	    d3.csv("data/death_county.csv", function(deathData){
 	    	d3.csv("data/death_rate_county.csv", function(deathRateData){
 
@@ -102,14 +102,14 @@ $(document).ready(function(){
 					.each(function(it) {
 
 						// console.log(it.properties);
-						var deathVal = parseFloat(deathData[0][it["properties"]["COUNTYNAME"]]);
+						var deathVal = parseFloat(deathData[9][it["properties"]["COUNTYNAME"]]);
 						if (!deathVal) {
 							it.properties.r = 0;
 						}else{
-							it.properties.r = data2Radius(deathData[0][it["properties"]["COUNTYNAME"]]);	
+							it.properties.r = data2Radius(deathData[9][it["properties"]["COUNTYNAME"]]);	
 						}
 
-						it.properties.raw = deathData[0][it["properties"]["COUNTYNAME"]];
+						it.properties.raw = deathData[9][it["properties"]["COUNTYNAME"]];
 				    	it.properties.c = path.centroid(it);
 				    	it.properties.x = 400;
 				    	it.properties.y = 300;
